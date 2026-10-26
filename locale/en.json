@@ -1,0 +1,6 @@
+{
+  "meta": {
+    "title": "Session Task Progress",
+    "description": "Adds a session view with task progress bars, live run progress, live and session-total cost estimates, status capsules, session and runtime details, working directory, error hints, and a Back to Chat action."
+  }
+}
