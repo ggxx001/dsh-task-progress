@@ -1,6 +1,6 @@
 {
   "name": "@ggxx/dsh-task-progress",
-  "version": "1.2.2",
+  "version": "1.2.3",
   "license": "MIT",
   "type": "module",
   "description": "Session task and runtime dashboard for DeepSeek Harness",

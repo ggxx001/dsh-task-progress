@@ -24,6 +24,10 @@ window.__ModuleLoader__.load({
       'page.subtitle.idle': '当前没有运行中的内容',
       'page.subtitle.blank': '这个会话还没有开始',
       'page.subtitle.attention': '有需要查看的问题或等待中的交互',
+      'pending.aria': '等待确认的请求',
+      'pending.title': '有一个等待确认的请求',
+      'pending.body': '任务进度页不会自动处理；回到对话即可批准、拒绝或回答。',
+      'pending.action': '去对话处理',
       'action.backToChat': '返回 Chat',
       'action.copy': '复制',
       'action.copied': '已复制',
@@ -159,6 +163,37 @@ window.__ModuleLoader__.load({
       'time.daysAgo': '{count} 天前',
       'duration.seconds': '{count} 秒',
       'duration.minutes': '{minutes} 分 {seconds} 秒',
+      'activity.title': '实时活动',
+      'activity.runningCount': '{count} 个正在运行',
+      'activity.thinking': '正在生成回复',
+      'activity.idle': '空闲中',
+      'activity.empty': '最近没有工具调用',
+      'activity.noArgs': '—',
+      'activity.test': '测试',
+      'activity.summary': '本会话 {calls} 次调用 · 失败 {failed} · 平均 {avg}',
+      'action.runTest': '跑测试',
+      'action.runCommand': '跑命令',
+      'action.readFile': '读文件',
+      'action.writeFile': '写文件',
+      'action.editFile': '改代码',
+      'action.search': '搜代码',
+      'action.findFile': '找文件',
+      'action.subagent': '派子代理',
+      'action.todowrite': '更新清单',
+      'action.ask': '等你确认',
+      'action.web': '上网查',
+      'tool.bash': '终端',
+      'tool.pwsh': '终端',
+      'tool.read': '读文件',
+      'tool.write': '写文件',
+      'tool.edit': '改文件',
+      'tool.grep': '搜索',
+      'tool.glob': '找文件',
+      'tool.subagent': '子代理',
+      'tool.todoWrite': '任务清单',
+      'tool.ask': '提问',
+      'tool.webSearch': '联网搜索',
+      'tool.webFetch': '抓网页',
       'common.none': '—',
       'common.unknown': '未知',
     };
@@ -172,6 +207,10 @@ window.__ModuleLoader__.load({
       'page.subtitle.idle': 'Nothing is running right now',
       'page.subtitle.blank': 'This session has not started yet',
       'page.subtitle.attention': 'Something needs attention or an interaction is waiting',
+      'pending.aria': 'Waiting request',
+      'pending.title': 'A request is waiting for confirmation',
+      'pending.body': 'It will not be handled automatically while you are here. Open Chat to approve, deny, or answer it.',
+      'pending.action': 'Open Chat',
       'action.backToChat': 'Back to Chat',
       'action.copy': 'Copy',
       'action.copied': 'Copied',
@@ -307,6 +346,37 @@ window.__ModuleLoader__.load({
       'time.daysAgo': '{count} d ago',
       'duration.seconds': '{count}s',
       'duration.minutes': '{minutes}m {seconds}s',
+      'activity.title': 'Live activity',
+      'activity.runningCount': '{count} running',
+      'activity.thinking': 'Working',
+      'activity.idle': 'Idle',
+      'activity.empty': 'No recent tool calls',
+      'activity.noArgs': '—',
+      'activity.test': 'test',
+      'activity.summary': '{calls} calls · {failed} failed · {avg} avg',
+      'action.runTest': 'run test',
+      'action.runCommand': 'run command',
+      'action.readFile': 'read',
+      'action.writeFile': 'write',
+      'action.editFile': 'edit',
+      'action.search': 'search',
+      'action.findFile': 'find',
+      'action.subagent': 'subagent',
+      'action.todowrite': 'todo',
+      'action.ask': 'ask',
+      'action.web': 'web',
+      'tool.bash': 'shell',
+      'tool.pwsh': 'shell',
+      'tool.read': 'read',
+      'tool.write': 'write',
+      'tool.edit': 'edit',
+      'tool.grep': 'grep',
+      'tool.glob': 'glob',
+      'tool.subagent': 'subagent',
+      'tool.todoWrite': 'todo',
+      'tool.ask': 'ask',
+      'tool.webSearch': 'search',
+      'tool.webFetch': 'fetch',
       'common.none': '—',
       'common.unknown': 'Unknown',
     };
@@ -341,6 +411,62 @@ window.__ModuleLoader__.load({
   max-width: 860px;
   margin: 0 auto;
   padding: 28px 24px 72px;
+}
+.dshTp_pending {
+  position: sticky;
+  top: 0;
+  z-index: 3;
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin-bottom: 14px;
+  padding: 10px 12px;
+  border: 1px solid var(--dsw-alias-state-warn-primary);
+  border-radius: 12px;
+  background: var(--dsw-alias-bg-layer-1);
+  box-shadow: 0 1px 0 var(--dsw-alias-border-l1);
+}
+.dshTp_pendingIcon {
+  flex: none;
+  margin-top: 2px;
+  color: var(--dsw-alias-state-warn-primary);
+}
+.dshTp_pendingBody {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+.dshTp_pendingTitle {
+  color: var(--dsw-alias-label-primary);
+  font-size: 13px;
+  line-height: 19px;
+  font-weight: 600;
+}
+.dshTp_pendingText {
+  margin-top: 1px;
+  color: var(--dsw-alias-label-secondary);
+  font-size: 11.5px;
+  line-height: 18px;
+}
+.dshTp_pendingAction {
+  flex: none;
+  height: 28px;
+  padding: 0 10px;
+  border: 1px solid var(--dsw-alias-state-warn-primary);
+  border-radius: 7px;
+  background: var(--dsw-alias-bg-layer-1);
+  color: var(--dsw-alias-state-warn-primary);
+  font: inherit;
+  font-size: 12px;
+  line-height: 26px;
+  white-space: nowrap;
+  cursor: pointer;
+}
+.dshTp_pendingAction:hover {
+  background: var(--dsw-alias-bg-layer-2);
+}
+.dshTp_pendingAction:focus-visible {
+  outline: 2px solid var(--dsw-alias-state-warn-primary);
+  outline-offset: 2px;
 }
 .dshTp_header {
   display: flex;
@@ -1091,6 +1217,143 @@ window.__ModuleLoader__.load({
 .dshTp_recentItem:has(.dshTp_dot[data-tone='active']) .dshTp_recentStatus {
   color: var(--dsw-alias-brand-primary);
 }
+.dshTp_activity {
+  margin-top: 10px;
+  border: 1px solid var(--dsw-alias-border-l1);
+  border-radius: 12px;
+  background: var(--dsw-alias-bg-layer-1);
+  padding: 11px 14px;
+  animation: dshTp_enter 220ms ease-out both;
+}
+.dshTp_activity[data-tone='active'] {
+  border-color: var(--dsw-alias-brand-primary);
+}
+.dshTp_activityHead {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.dshTp_activityLed {
+  flex: none;
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  background: var(--dsw-alias-state-idle-primary);
+}
+.dshTp_activityLed[data-tone='active'] {
+  background: var(--dsw-alias-brand-primary);
+  animation: dshTp_pulse 1.2s ease-in-out infinite;
+}
+.dshTp_activityLed[data-tone='error'] {
+  background: var(--dsw-alias-state-error-primary);
+}
+.dshTp_activityTitle {
+  color: var(--dsw-alias-label-primary);
+  font-size: 12.5px;
+  line-height: 19px;
+  font-weight: 600;
+}
+.dshTp_activityMeta {
+  margin-left: auto;
+  color: var(--dsw-alias-label-secondary);
+  font-size: 11px;
+  line-height: 18px;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+.dshTp_activityList {
+  display: flex;
+  flex-direction: column;
+  margin: 8px 0 0;
+  padding: 0;
+  list-style: none;
+}
+.dshTp_activityRow {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  padding: 4px 0;
+  border-top: 1px solid var(--dsw-alias-border-l1);
+  font-size: 12px;
+  line-height: 18px;
+}
+.dshTp_activityRow:first-child { border-top: 0; }
+.dshTp_activityDot {
+  flex: none;
+  width: 6px;
+  height: 6px;
+  border-radius: 999px;
+  background: var(--dsw-alias-state-idle-primary);
+}
+.dshTp_activityDot[data-tone='active'] {
+  background: var(--dsw-alias-brand-primary);
+  animation: dshTp_pulse 1.2s ease-in-out infinite;
+}
+.dshTp_activityDot[data-tone='done'] {
+  background: var(--dsw-alias-state-success-primary);
+}
+.dshTp_activityDot[data-tone='error'] {
+  background: var(--dsw-alias-state-error-primary);
+}
+.dshTp_activityTool {
+  flex: none;
+  color: var(--dsw-alias-label-secondary);
+  font-size: 11.5px;
+  white-space: nowrap;
+}
+.dshTp_activityRow[data-state='running'] .dshTp_activityTool {
+  color: var(--dsw-alias-brand-primary);
+}
+.dshTp_activityDetail {
+  flex: 1 1 auto;
+  min-width: 0;
+  overflow: hidden;
+  color: var(--dsw-alias-label-primary);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 11.5px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.dshTp_activityDetail[data-muted='true'] {
+  color: var(--dsw-alias-label-secondary);
+}
+.dshTp_activityChip {
+  flex: none;
+  padding: 0 5px;
+  border-radius: 5px;
+  background: var(--dsw-alias-bg-layer-2);
+  color: var(--dsw-alias-brand-primary);
+  font-size: 10.5px;
+  line-height: 16px;
+  white-space: nowrap;
+}
+.dshTp_activityTime {
+  flex: none;
+  min-width: 42px;
+  color: var(--dsw-alias-label-secondary);
+  font-size: 11px;
+  line-height: 18px;
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+.dshTp_activityRow[data-state='failed'] .dshTp_activityTime {
+  color: var(--dsw-alias-state-error-primary);
+}
+.dshTp_activityEmpty {
+  margin: 8px 0 0;
+  color: var(--dsw-alias-label-secondary);
+  font-size: 11.5px;
+  line-height: 18px;
+}
+.dshTp_activityFoot {
+  margin: 8px 0 0;
+  padding-top: 7px;
+  border-top: 1px solid var(--dsw-alias-border-l1);
+  color: var(--dsw-alias-label-secondary);
+  font-size: 11px;
+  line-height: 17px;
+  font-variant-numeric: tabular-nums;
+}
 .dshTp_icon { flex: none; display: inline-block; vertical-align: -2px; }
 @keyframes dshTp_pulse {
   0%, 100% { opacity: 1; }
@@ -1116,6 +1379,8 @@ window.__ModuleLoader__.load({
   .dshTp_inner { padding: 20px 14px 64px; }
   .dshTp_header { flex-direction: column; gap: 10px; }
   .dshTp_title { font-size: 18px; line-height: 26px; }
+  .dshTp_pending { flex-wrap: wrap; }
+  .dshTp_pendingAction { margin-left: 24px; }
   .dshTp_costs { grid-template-columns: 1fr; }
   .dshTp_infoGrid { grid-template-columns: 1fr; }
   .dshTp_panels { grid-template-columns: 1fr; }
@@ -1207,6 +1472,112 @@ window.__ModuleLoader__.load({
         minutes: Math.floor(seconds / 60),
         seconds: seconds % 60,
       });
+    }
+
+    function argsRecord(raw) {
+      if (typeof raw !== 'string' || raw === '') return undefined;
+      try {
+        const value = JSON.parse(raw);
+        return value !== null && typeof value === 'object' && !Array.isArray(value) ? value : undefined;
+      } catch (cause) {
+        return undefined;
+      }
+    }
+
+    const DETAIL_KEYS = ['command', 'cmd', 'script', 'pattern', 'query', 'file_path', 'path', 'url', 'description', 'prompt', 'content'];
+
+    function collapseText(value, limit) {
+      if (typeof value !== 'string') return '';
+      const text = value.replace(/\s+/g, ' ').trim();
+      if (text.length <= limit) return text;
+      return text.slice(0, limit - 1) + '…';
+    }
+
+    function describeCall(raw) {
+      const args = argsRecord(raw);
+      let detail = '';
+      if (args !== undefined) {
+        for (const key of DETAIL_KEYS) {
+          const value = args[key];
+          if (typeof value === 'string' && value.trim() !== '') { detail = value; break; }
+        }
+        if (detail === '') {
+          for (const key of Object.keys(args)) {
+            const value = args[key];
+            if (typeof value === 'string' && value.trim() !== '') { detail = value; break; }
+          }
+        }
+      }
+      const isTest = /\b(?:npm|pnpm|yarn|npx|bun|node|deno|python3?|pytest|vitest|jest|mocha|cargo|dotnet|mvn|gradle)\b[^|;&]*\b(?:test|tests|spec|specs|check)\b/i.test(detail)
+        || /\b(?:pytest|vitest|jest|mocha)\b/i.test(detail);
+      return { detail: collapseText(detail, 96), isTest: isTest };
+    }
+
+    const TOOL_LABELS = {
+      bash: 'tool.bash',
+      pwsh: 'tool.pwsh',
+      read: 'tool.read',
+      write: 'tool.write',
+      edit: 'tool.edit',
+      grep: 'tool.grep',
+      glob: 'tool.glob',
+      subagent: 'tool.subagent',
+      todo_write: 'tool.todoWrite',
+      ask_user_question: 'tool.ask',
+      web_search: 'tool.webSearch',
+      web_fetch: 'tool.webFetch',
+    };
+
+    function toolLabel(name, t) {
+      if (typeof name !== 'string' || name === '') return '';
+      const key = TOOL_LABELS[name];
+      return key === undefined ? name : t(key);
+    }
+
+    const FILE_TOOLS = { read: true, write: true, edit: true, present: true };
+
+    function baseName(value) {
+      if (typeof value !== 'string') return '';
+      const parts = value.split(/[\\/]/).filter((part) => part !== '');
+      return parts.length > 0 ? parts[parts.length - 1] : value;
+    }
+
+    function shortDetail(name, detail) {
+      if (detail === '') return '';
+      return FILE_TOOLS[name] === true ? baseName(detail) : detail;
+    }
+
+    function actionOf(name, isTest, t) {
+      if (isTest) return t('action.runTest');
+      switch (name) {
+        case 'pwsh':
+        case 'bash':
+        case 'shell':
+        case 'job_output':
+        case 'job_kill':
+          return t('action.runCommand');
+        case 'read':
+          return t('action.readFile');
+        case 'write':
+          return t('action.writeFile');
+        case 'edit':
+          return t('action.editFile');
+        case 'grep':
+          return t('action.search');
+        case 'glob':
+          return t('action.findFile');
+        case 'subagent':
+          return t('action.subagent');
+        case 'todo_write':
+          return t('action.todowrite');
+        case 'ask_user_question':
+          return t('action.ask');
+        case 'web_search':
+        case 'web_fetch':
+          return t('action.web');
+        default:
+          return toolLabel(name, t);
+      }
     }
 
     function formatDateTime(ms) {
@@ -1667,25 +2038,67 @@ window.__ModuleLoader__.load({
       const currentStep = isTurn(partial === null ? undefined : partial.step)
         ? partial.step
         : (lastRunningCall !== null && isTurn(lastRunningCall.step) ? lastRunningCall.step : null);
-      const recentSteps = [];
-      if (currentTurn !== null) {
-        const completed = [];
-        for (const node of nodes) {
-          if (node === null || node === undefined || node.turn !== currentTurn) continue;
-          if (node.kind === 'tool-result' && typeof node.name === 'string' && node.name !== '') {
-            completed.push({ key: `tool:${node.seq ?? completed.length}:${node.name}`, name: node.name, status: 'done' });
-          } else if (node.kind === 'assistant' && isTurn(node.step)) {
-            completed.push({ key: `assistant:${node.seq ?? completed.length}`, name: t('steps.assistant', { step: node.step }), status: 'done' });
-          }
-        }
-        recentSteps.push(...completed.slice(-5));
-        for (const call of runningCalls.slice(-2)) {
-          if (call !== null && call !== undefined && typeof call.name === 'string' && call.name !== '') {
-            recentSteps.push({ key: `running:${call.callId ?? call.name}`, name: call.name, status: 'running' });
-          }
-        }
-        if (recentSteps.length > 6) recentSteps.splice(0, recentSteps.length - 6);
+      const runningActivity = [];
+      for (const call of runningCalls) {
+        if (call === null || call === undefined || typeof call.name !== 'string' || call.name === '') continue;
+        const info = describeCall(call.argsRaw);
+        runningActivity.push({
+          key: 'run:' + (call.callId === undefined ? call.name : call.callId) + ':' + (call.step === undefined ? '' : call.step),
+          state: 'running',
+          tool: actionOf(call.name, info.isTest, t),
+          detail: shortDetail(call.name, info.detail),
+          isTest: info.isTest,
+          timeText: typeof call.time === 'number' ? formatDuration(Math.max(0, now - call.time), t) : '',
+        });
+        if (runningActivity.length >= 3) break;
       }
+
+      const finishedCalls = [];
+      let finishedSum = 0;
+      let finishedFailed = 0;
+      for (const node of nodes) {
+        if (node === null || node === undefined || node.kind !== 'tool-result') continue;
+        finishedCalls.push(node);
+        if (node.isError === true) finishedFailed += 1;
+        if (typeof node.time === 'number' && typeof node.callTime === 'number') {
+          finishedSum += Math.max(0, node.time - node.callTime);
+        }
+      }
+      const recentFinished = finishedCalls.slice(-4);
+      const activityRows = runningActivity.slice();
+      for (const node of recentFinished) {
+        const call = node.call === null || node.call === undefined ? undefined : node.call;
+        const info = describeCall(call === undefined ? undefined : call.argsRaw);
+        const toolName = typeof node.name === 'string' && node.name !== ''
+          ? node.name
+          : (call !== undefined && typeof call.name === 'string' ? call.name : '');
+        activityRows.push({
+          key: 'done:' + (node.seq === undefined ? String(node.callId) : String(node.seq)),
+          state: node.isError === true ? 'failed' : 'done',
+          tool: actionOf(toolName, info.isTest, t),
+          detail: shortDetail(toolName, info.detail),
+          isTest: info.isTest,
+          timeText: typeof node.time === 'number' && typeof node.callTime === 'number'
+            ? formatDuration(Math.max(0, node.time - node.callTime), t)
+            : '',
+        });
+      }
+      const lastFinished = recentFinished.length > 0 ? recentFinished[recentFinished.length - 1] : null;
+      const activityTone = running
+        ? 'active'
+        : (lastFinished !== null && lastFinished.isError === true ? 'error' : 'idle');
+      const activityMeta = running
+        ? (runningActivity.length > 0
+            ? t('activity.runningCount', { count: runningActivity.length })
+            : t('activity.thinking'))
+        : t('activity.idle');
+      const activitySummary = finishedCalls.length === 0
+        ? ''
+        : t('activity.summary', {
+            calls: finishedCalls.length,
+            failed: finishedFailed,
+            avg: formatDuration(finishedSum / finishedCalls.length, t),
+          });
 
       const lastTurnError = lastNodeOfKind(nodes, 'turn-error');
       const lastMaxTokens = lastNodeOfKind(nodes, 'turn-max-tokens');
@@ -1951,6 +2364,29 @@ window.__ModuleLoader__.load({
         h(
           'div',
           { className: 'dshTp_inner' },
+          pending
+            ? h(
+                'div',
+                {
+                  className: 'dshTp_pending',
+                  role: 'alert',
+                  'aria-live': 'assertive',
+                  'aria-label': t('pending.aria'),
+                },
+                h('span', { className: 'dshTp_pendingIcon' }, h(Icon, { kind: 'alert' })),
+                h(
+                  'div',
+                  { className: 'dshTp_pendingBody' },
+                  h('div', { className: 'dshTp_pendingTitle' }, t('pending.title')),
+                  h('div', { className: 'dshTp_pendingText' }, t('pending.body')),
+                ),
+                h(
+                  'button',
+                  { type: 'button', className: 'dshTp_pendingAction', onClick: goChat },
+                  t('pending.action'),
+                ),
+              )
+            : null,
           h(
             'header',
             { className: 'dshTp_header' },
@@ -2041,6 +2477,49 @@ window.__ModuleLoader__.load({
                 ),
               ),
             ),
+          ),
+
+          h(
+            'section',
+            {
+              className: 'dshTp_activity',
+              'data-tone': activityTone,
+              'aria-label': t('activity.title'),
+            },
+            h(
+              'div',
+              { className: 'dshTp_activityHead' },
+              h('span', { className: 'dshTp_activityLed', 'data-tone': activityTone, 'aria-hidden': true }),
+              h('span', { className: 'dshTp_activityTitle' }, t('activity.title')),
+              h('span', { className: 'dshTp_activityMeta' }, activityMeta),
+            ),
+            activityRows.length > 0
+              ? h(
+                  'ol',
+                  { className: 'dshTp_activityList' },
+                  activityRows.map((row) =>
+                    h(
+                      'li',
+                      { key: row.key, className: 'dshTp_activityRow', 'data-state': row.state },
+                      h('span', {
+                        className: 'dshTp_activityDot',
+                        'data-tone': row.state === 'running' ? 'active' : row.state === 'failed' ? 'error' : 'done',
+                        'aria-hidden': true,
+                      }),
+                      row.tool === ''
+                        ? null
+                        : h('span', { className: 'dshTp_activityTool' }, row.tool),
+                      h(
+                        'span',
+                        { className: 'dshTp_activityDetail', 'data-muted': row.detail === '' ? 'true' : 'false' },
+                        row.detail === '' ? t('activity.noArgs') : row.detail,
+                      ),
+                      row.timeText === '' ? null : h('span', { className: 'dshTp_activityTime' }, row.timeText),
+                    ),
+                  ),
+                )
+              : h('p', { className: 'dshTp_activityEmpty' }, t('activity.empty')),
+            activitySummary === '' ? null : h('p', { className: 'dshTp_activityFoot' }, activitySummary),
           ),
 
           h(
@@ -2383,35 +2862,6 @@ window.__ModuleLoader__.load({
                       t(taskLoading ? 'empty.loadingBody' : 'tasks.emptyBody'),
                     ),
                   ),
-                  recentSteps.length > 0
-                    ? h(
-                        'div',
-                        { className: 'dshTp_recent' },
-                        h('div', { className: 'dshTp_recentHead' }, h('span', null, t('steps.title'))),
-                        h('p', { className: 'dshTp_recentNote' }, t('steps.note')),
-                        h(
-                          'ol',
-                          { className: 'dshTp_recentList' },
-                          recentSteps.map((step) =>
-                            h(
-                              'li',
-                              { key: step.key, className: 'dshTp_recentItem' },
-                              h('span', {
-                                className: 'dshTp_dot',
-                                'data-tone': step.status === 'running' ? 'active' : 'done',
-                                'aria-hidden': true,
-                              }),
-                              h('span', { className: 'dshTp_recentName' }, step.name),
-                              h(
-                                'span',
-                                { className: 'dshTp_recentStatus' },
-                                t(step.status === 'running' ? 'steps.running' : 'steps.done'),
-                              ),
-                            ),
-                          ),
-                        ),
-                      )
-                    : null,
                 ),
           ),
 
